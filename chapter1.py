@@ -24,7 +24,7 @@ def caes_encode(plaintext, rot):
     rot = valid_rot(rot)
     output = []
     for char in plaintext:
-        if re.match('[A-Za_z]', char):
+        if re.match('[A-Za-z]', char):
             char_orig_num = list(caesars_nums.values()).index(char.lower())+1
             if char_orig_num+rot > 26:
                 output.append(caesars_nums[char_orig_num+rot-26])
@@ -40,9 +40,10 @@ def caes_decode(ciphertext, rot):
     rot = valid_rot(rot)
     output = []
     for char in ciphertext:
+        print(char)
         if re.match('[A-Za-z]', char):
             char_orig_num = list(caesars_nums.values()).index(char.lower())+1
-            if char_orig_num-rot < 0:
+            if char_orig_num-rot <= 0:
                 output.append(caesars_nums[char_orig_num-rot+26])
             else:
                 output.append(caesars_nums[char_orig_num-rot])
